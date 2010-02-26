@@ -1,0 +1,17 @@
+
+
+   These simple scripts are meant to make Twitter accessible 
+'the unix way'. These snippets of code are simple to read, 
+even for someone who doesn't program in perl, and they easily 
+integrate with grep, awk, sed, and so forth.
+
+   The only dependency is Net::Twitter. All one has to do 
+assuming perl is properly installed is to become root, start 
+the cpan shell, and 'install Net::Twitter'.
+
+   If I get requests that make sense - that are helpful for 
+doing things in 'the unix way', then I may very well write 
+some code for the task in question. If the situation were 
+right I could take on some integration work for others, 
+but I want to be completely clear that I am NOT a strong 
+perl programmer by any stretch of the imagination. 
