@@ -1,0 +1,21 @@
+#!/usr/bin/perl
+use Net::Twitter;
+
+
+$user = shift ;
+$pass = shift ;
+my $nt = Net::Twitter->new(
+   traits   => [qw/API::REST API::Search API::Lists/],
+   username => $user,
+   password => $pass);
+
+my $r = $nt->list_lists($user) ;
+
+#you might very well want 'slug' here and not 'name'
+#particularly if you're trying to use the list in
+#some follow on process
+while($name = %$r->{'lists'}[$i]{'name'})
+  {
+    print $name . "\n" ;
+    $i++ ;
+  }

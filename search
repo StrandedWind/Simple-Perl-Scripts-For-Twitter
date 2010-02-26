@@ -1,0 +1,16 @@
+#!/usr/bin/perl
+use Net::Twitter;                
+
+#don't forget to surround complex things with single quotes
+my $search = shift ;
+
+my $nt = Net::Twitter->new(
+    traits => ['API::Search', 'InflateObjects' ],
+    decode_html_entities => 1,
+);
+
+
+my $r = $nt->search($search, {rrp=>'100'});
+
+for my $tweet ( @{$r->results} ) {
+    printf "%s: %s\n", $tweet->from_user, $tweet->text;}

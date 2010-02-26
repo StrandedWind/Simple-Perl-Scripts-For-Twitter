@@ -1,0 +1,21 @@
+use Net::Twitter;
+use Data::Dumper ;
+
+$user = shift ;
+$pass = shift ;
+my $nt = Net::Twitter->new(
+   traits   => [qw/API::REST API::Search/],
+   username => $user,
+   password => $pass
+);
+my $result = $nt->direct_messages() ;
+
+$i = 1 ;
+print "\n" ;
+  foreach $msg (@$result)
+	{
+    print Dumper($msg) ;
+		print "msg #" . $i . " " ;
+		print $msg->{'sender_screen_name'} . ": " ;
+		print $msg->{'text'} . "\n\n" ;
+	} 

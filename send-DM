@@ -1,0 +1,15 @@
+#!/usr/bin/perl
+use Net::Twitter;
+
+$user = shift ;
+$pass = shift ;
+$receiver = shift;
+#surround complex stuff in single quotes
+$msg = shift ;
+
+my $nt = Net::Twitter->new(
+      traits   => [qw/API::REST API::Search/],
+      username => $user,
+      password => $pass );
+
+$nt->new_direct_message($receiver, $msg);

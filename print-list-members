@@ -1,0 +1,24 @@
+#!/usr/bin/perl
+use Net::Twitter;
+
+$user = shift ;
+$pass = shift ;
+#slug of the list, not the name, mind you ....
+$list = shift ;
+
+my $nt = Net::Twitter->new(
+      traits   => [qw/API::Lists/, 'InflateObjects'],
+      decode_html_entities => 1,
+      username => $user,
+      password => $pass );
+
+my @members;
+for ( my $cursor = -1; $cursor; ) {
+    my $r = $nt->list_members($user, $list, { cursor => $cursor });
+    push @members, @{$r->users};
+    $cursor = $r->next_cursor; }
+
+foreach $tweeter (@members)
+    {
+        print $tweeter->{screen_name} . "\n" ;
+    }

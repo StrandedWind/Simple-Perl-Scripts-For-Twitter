@@ -1,0 +1,17 @@
+#!/usr/bin/perl
+use Net::Twitter;
+
+$user = shift ;
+$pass = shift ;
+#if it's more than one word put it in single quotes
+$tweet = shift ;
+
+my $nt = Net::Twitter->new(
+      traits   => [qw/API::REST API::Search/, 'InflateObjects'],
+      decode_html_entities => 1,
+      source => '',
+      username => $user,
+      password => $pass
+  );
+
+my $result = $nt->update($tweet);
